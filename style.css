@@ -1,0 +1,152 @@
+/* 
+COLORS
+
+*/
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  font-family: "Roboto", sans-serif;
+  color: #343a40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.app {
+  width: 90%;
+  height: 90%;
+  display: grid;
+  grid-template-columns: 40% 1fr;
+  grid-template-rows: auto 1fr auto;
+
+  border-radius: 34px;
+  padding: 24px;
+  background-color: #fff9db;
+}
+
+nav {
+  /* background-color: aquamarine; */
+  padding-bottom: 24px;
+  grid-column: 1/-1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+.title {
+  font-size: 32px;
+  margin-right: 1rem;
+  font-weight: 700;
+}
+
+label[for="searchField"] {
+  font-weight: 700;
+  /* padding-right: 1rem; */
+}
+
+#searchField {
+  height: 36px;
+  width: 24rem;
+  font-family: inherit;
+  font-size: inherit;
+  border-radius: 50px;
+  border: 1px solid #fcc419;
+  padding-left: 12px;
+  margin-right: 0.5rem;
+}
+#searchField::placeholder {
+  color: #adb5bd;
+}
+#searchField:hover {
+  border: 2px solid #343a40;
+}
+#searchField:focus {
+  color: inherit;
+  border: 2px solid #343a40;
+  outline: none;
+}
+
+.searchBtn {
+  background-color: #fcc419;
+  padding: 10px 24px;
+  border-radius: 100px;
+  border: 2px solid #fcc419;
+  font-weight: 600;
+}
+.searchBtn:hover {
+  border: 2px solid #343a40;
+  background-color: #fab005;
+}
+
+/* SEARCH RESULTS VIEW */
+aside {
+  grid-row: 2/-1;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+}
+
+.recipe-list {
+  border-radius: 16px;
+  background-color: #ffe8cc;
+  border: 2px solid #ffe8cc;
+  /* display: flex;
+  flex-direction: column; */
+}
+
+.recipe-li {
+  height: 80px;
+  width: auto;
+  border-radius: 16px;
+  margin: 10px;
+  cursor: pointer;
+  background-color: #ffe8cc;
+
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.recipe-li:hover {
+  background-color: #fcc419;
+}
+
+.recipe-li-img {
+  height: 100%;
+  width: 33.3%;
+  border-radius: 16px 0 0px 16px;
+  object-fit: cover;
+}
+
+.line {
+  background-color: #adb5bd;
+  width: auto;
+  height: 1px;
+  margin: 0 34px;
+}
+
+footer {
+  grid-column: 1/-1;
+  padding-top: 12px;
+}
+
+li {
+  list-style: none;
+}
+
+.recipe-img {
+  height: 50px;
+}
