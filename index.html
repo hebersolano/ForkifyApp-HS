@@ -7,42 +7,88 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Raleway:wght@800&family=Roboto:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Raleway:wght@800&family=Roboto:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
     <title>Forkify App</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="app">
-      <nav>
+    <div class="app-main-container">
+      <header class="header-container">
         <div>
-          <label for="searchField">Recipes</label>
+          <label class="search-input-label" for="searchField">Recipes</label>
           <input
+            class="search-input"
+            id="searchField"
             type="text"
             name="search"
-            id="searchField"
             placeholder="What recipe are you looking for?"
           />
           <button class="btn searchBtn">Search</button>
         </div>
         <h1 class="title">FORKIFY</h1>
+      </header>
+
+      <main class="recipe-container">
+        <section class="header-recipe">
+          <div class="header-img-box">
+            <img
+              class="img-header"
+              src="/img/BBQChickenPizzawithCauliflowerCrust5004699695624ce.jpg"
+              alt=""
+            />
+          </div>
+          <div class="header-recipe-text">
+            <h1>Spicy Chicken and Pepper Jack Pizza</h1>
+            <p class="recipe-publisher">My Baking Addiction</p>
+          </div>
+        </section>
+
+        <section class="content-recipe">
+          <div class="recipe-data">
+            <p class="cooking-time">
+              Cooking time: <span class="cooking-time-data">45</span>
+            </p>
+            <p class="servings">
+              Servings: <span class="servings-data">4</span>
+            </p>
+          </div>
+
+          <div class="recipe-ingredients">
+            <ul class="recipe-ingredients-box">
+              <li class="recipe-ingredient">
+                <span class="recipe-amount">2</span>
+                <span class="recipe-unit">cups</span>
+                <span class="recipe-ingredient-name"
+                  >Chopped cilantro or dried oregano</span
+                >
+              </li>
+            </ul>
+          </div>
+        </section>
+      </main>
+
+      <nav class="results-container">
+        <ul class="results-list-box">
+          <!-- <ul class="recipes"></ul> -->
+          <li class="result-recipe-li">
+            <a href="#" class="result-recipe-link" data-id="29347109487">
+              <img
+                class="result-recipe-img"
+                src="img/BBQChickenPizzawithCauliflowerCrust5004699695624ce.jpg"
+                alt="recipe"
+              />
+              <div class="result-recipe-text">
+                <p class="result-recipe-title">
+                  Cauliflower Pizza Crust (with BBQ Chicken Pizza)
+                </p>
+                <p class="result-recipe-publisher">Author</p>
+              </div>
+            </a>
+          </li>
+        </ul>
       </nav>
-      <main class="recipe-container"></main>
-      <aside class="recipe-list">
-        <!-- <ul class="recipes"></ul> -->
-        <div class="recipe-li">
-          <img
-            class="recipe-li-img"
-            src="/img/BBQChickenPizzawithCauliflowerCrust5004699695624ce.jpg"
-            alt="recipe"
-          />
-          <p class="recipe-li-title">
-            Cauliflower Pizza Crust (with BBQ Chicken Pizza)
-          </p>
-        </div>
-        <div class="line"></div>
-      </aside>
       <footer>
         <p>My app forkify</p>
       </footer>
