@@ -1,3 +1,5 @@
+import { fetchTemplate } from "./helpers.js";
+
 const API_key = "e590cbdc-2344-408d-b52f-1306ddad962c";
 const PATH = "https://forkify-api.herokuapp.com/api/v2/recipes";
 let query = "pizza";
@@ -8,12 +10,7 @@ let searchBtn = document.querySelector(".searchBtn");
 let recipeList = document.querySelector(".results-list-box");
 
 // selecting recipe elements
-let imgRecipe = document.querySelector(".img-header");
-let titleRecipe = document.querySelector(".recipe-title");
-let cookTime = document.querySelector(".cooking-time-data");
-let servings = document.querySelector(".servings-data");
-let ingredientsBox = document.querySelector(".recipe-ingredients-box");
-let publisherName = document.querySelector(".publisher-name");
+let recipeContainer = document.querySelector(".recipe-container");
 
 let recipe;
 
@@ -115,10 +112,22 @@ const getRecipe = async function (id) {
   }
 };
 
-// getRecipe();
-const recipeContainer = document.querySelector(".recipe-container");
+const renderRecipe = async function (recipe) {
+  const recipeTemplate = await fetchTemplate("recipe-tp");
 
-const renderRecipe = function (recipe) {
+  // insert html template
+  recipeContainer.innerHTML = "";
+  recipeContainer.insertAdjacentHTML("afterbegin", recipeTemplate);
+
+  // selecting recipe elements
+  let imgRecipe = document.querySelector(".img-header");
+  let titleRecipe = document.querySelector(".recipe-title");
+  let cookTime = document.querySelector(".cooking-time-data");
+  let servings = document.querySelector(".servings-data");
+  let ingredientsBox = document.querySelector(".recipe-ingredients-box");
+  let publisherName = document.querySelector(".publisher-name");
+
+  // insert data to template
   imgRecipe.src = recipe.image_url;
   titleRecipe.textContent = recipe.title;
 

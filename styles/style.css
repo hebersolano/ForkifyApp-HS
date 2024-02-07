@@ -105,14 +105,23 @@ body {
   outline: none;
 }
 
+.header-icon {
+  width: 26px;
+  height: 26px;
+  padding-right: 1rem;
+}
+.header-icon:hover {
+  color: var(--main-shade-n1);
+}
+
 .bookmarks-box {
   display: relative;
 }
 
 .bookmark-icon {
-  width: 26px;
-  height: 26px;
-  padding-right: 2rem;
+}
+
+.bookmark-icon:hover {
 }
 
 .bookmark-window {
@@ -129,6 +138,95 @@ body {
   box-shadow: 0 0 4px 0 #aaaaaa46;
   width: 400px;
   height: 400px;
+}
+
+/* add recipe style */
+.add-recipe-box {
+}
+
+.add-recipe-window {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  width: 100%;
+  height: 100%;
+  background-color: hsla(0, 0%, 40%, 0.577);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-recipe-form {
+  max-width: 100rem;
+  padding: 5rem 6rem;
+  border-radius: 16px;
+  background-color: var(--main-tint-n3);
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.close-windows {
+  position: absolute;
+
+  display: grid;
+  place-content: center;
+  width: 3.4rem;
+  height: 3.4rem;
+  right: 0;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 50%;
+  stroke: #ff5e00;
+}
+.close-windows:hover > .icon {
+  stroke: white;
+}
+
+.form-recipe-data {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 1rem 2rem;
+}
+
+.h2-form {
+  grid-column: 1/-1;
+}
+
+.data-field {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.data-field > label {
+  flex-basis: 100%;
+}
+.data-field > input {
+  outline: none;
+  border: none;
+
+  flex-basis: 100%;
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.5rem;
+}
+
+.form-recipe-ingredients {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.ing-fields {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.ing-fields input {
+  max-width: 10rem;
 }
 
 .searchBtn {
@@ -186,7 +284,6 @@ body {
 .result-recipe-img {
   width: 100%;
   height: 80px;
-  object-fit: cover;
 }
 
 .result-recipe-title {
@@ -226,12 +323,12 @@ body {
 /* **************** */
 .header-img-box {
   height: 30rem;
+  overflow: hidden;
 }
 
 .img-header {
-  object-fit: cover;
-  height: 100%;
   width: 100%;
+  /* height: fit-content; */
 }
 
 .header-recipe-title {
@@ -259,7 +356,34 @@ body {
 }
 
 .servings-control {
-  margin-left: 1rem;
+  /* text-decoration: none !important; */
+}
+
+.btn-ctr-serv {
+  text-decoration: none;
+}
+
+.icon-ctr {
+  transition: all 300ms ease;
+}
+.icon-ctr:hover {
+  transform: scale(1.1);
+}
+
+.bookmarked-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2.4rem;
+  color: var(--gray-tint-n2);
+  border: 2px solid var(--gray-tint-n2);
+  border-radius: 50%;
+  width: 3.4rem;
+  height: 3.4rem;
+}
+.bookmarked-box:hover {
+  color: var(--accent-c);
+  border: 2px solid var(--accent-c);
 }
 
 /* content recipe */

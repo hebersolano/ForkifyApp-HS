@@ -11,16 +11,101 @@
       rel="stylesheet"
     />
     <title>Forkify App</title>
-    <link rel="stylesheet" href="general-style.css" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./styles/general-style.css" />
+    <link rel="stylesheet" href="./styles/style.css" />
   </head>
   <body>
     <div class="app-main-container">
       <header class="header-container">
         <div class="search-box">
           <div class="bookmarks-box">
-            <ion-icon class="bookmark-icon" name="bookmarks"></ion-icon>
+            <ion-icon class="header-icon bookmark-icon" name="bookmarks"></ion-icon>
             <div class="bookmark-window"></div>
+          </div>
+          <div class="add-recipe-box">
+            <ion-icon class="header-icon add-recipe-icon" name="document"></ion-icon>
+
+            <!-- Add recipe windows -->
+            <div class="hidden add-recipe-window">
+              <form class="add-recipe-form" action="">
+                <button class="close-windows btn">
+                  <!-- prettier-ignore -->
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-close-windows icon icon-md w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+
+                <div class="form-recipe-data">
+                  <h2 class="h2-form">Recipe data (4 servings)</h2>
+                  <div class="data-field">
+                    <label for="title">Title </label>
+                    <input id="title" name="title" type="text" />
+                  </div>
+
+                  <div class="data-field">
+                    <label for="publisher">Publisher</label>
+                    <input type="text" name="publisher" id="publisher" />
+                  </div>
+                  <div class="data-field">
+                    <label for="prep-time">Prep time</label>
+                    <input type="text" name="prep-time" id="prep-time" />
+                  </div>
+
+                  <div class="data-field">
+                    <label for="url">URL</label>
+                    <input id="url" name="url" type="text" />
+                  </div>
+                  <div class="data-field">
+                    <label for="img-url">Image URL</label>
+                    <input type="text" name="img-url" id="img-url" />
+                  </div>
+                </div>
+
+                <div class="form-recipe-ingredients">
+                  <h2 class="h2-form">Ingredients</h2>
+                  <div class="ing-fields">
+                    <label for="ing">Ingredient 1</label>
+                    <input type="text" id="ing-qty" name="ing-qty" placeholder="Quantity" />
+                    <input type="text" id="ing-u" name="ing-u" placeholder="Unit" />
+                    <input type="text" id="ing-ing" name="ing-ing" placeholder="Ingredient" />
+                    <label for="ing">Ingredient 2</label>
+                    <input type="text" id="ing-qty" name="ing-qty" placeholder="Quantity" />
+                    <input type="text" id="ing-u" name="ing-u" placeholder="Unit" />
+                    <input type="text" id="ing-ing" name="ing-ing" placeholder="Ingredient" />
+                    <label for="ing">Ingredient 3</label>
+                    <input type="text" id="ing-qty" name="ing-qty" placeholder="Quantity" />
+                    <input type="text" id="ing-u" name="ing-u" placeholder="Unit" />
+                    <input type="text" id="ing-ing" name="ing-ing" placeholder="Ingredient" />
+                    <label for="ing">Ingredient 4</label>
+                    <input type="text" id="ing-qty" name="ing-qty" placeholder="Quantity" />
+                    <input type="text" id="ing-u" name="ing-u" placeholder="Unit" />
+                    <input type="text" id="ing-ing" name="ing-ing" placeholder="Ingredient" />
+                  </div>
+                  <div class="ing-fields">
+                    <label for="ing">Ingredient 1</label>
+                    <input type="text" id="ing-qty" name="ing-qty" placeholder="Quantity" />
+                    <input type="text" id="ing-u" name="ing-u" placeholder="Unit" />
+                    <input type="text" id="ing-ing" name="ing-ing" placeholder="Ingredient" />
+                    <label for="ing">Ingredient 2</label>
+                    <input type="text" id="ing-qty" name="ing-qty" placeholder="Quantity" />
+                    <input type="text" id="ing-u" name="ing-u" placeholder="Unit" />
+                    <input type="text" id="ing-ing" name="ing-ing" placeholder="Ingredient" />
+                    <label for="ing">Ingredient 3</label>
+                    <input type="text" id="ing-qty" name="ing-qty" placeholder="Quantity" />
+                    <input type="text" id="ing-u" name="ing-u" placeholder="Unit" />
+                    <input type="text" id="ing-ing" name="ing-ing" placeholder="Ingredient" />
+                    <label for="ing">Ingredient 4</label>
+                    <input type="text" id="ing-qty" name="ing-qty" placeholder="Quantity" />
+                    <input type="text" id="ing-u" name="ing-u" placeholder="Unit" />
+                    <input type="text" id="ing-ing" name="ing-ing" placeholder="Ingredient" />
+                  </div>
+                </div>
+
+                <div class="btn-submit-box">
+                  <button type="submit">Upload</button>
+                </div>
+              </form>
+            </div>
           </div>
 
           <label class="search-input-label" for="searchField">
@@ -42,7 +127,7 @@
       </header>
 
       <main class="recipe-container">
-        <div class="">
+        <!-- <div class="">
           <section class="header-recipe">
             <div class="header-img-box">
               <img class="img-header" src="" alt="image recipe food" />
@@ -86,7 +171,7 @@
             at their website.
           </p>
           <a class="link" href="http://">Directions</a>
-        </section>
+        </section> -->
       </main>
 
       <nav class="results-container">
@@ -120,7 +205,9 @@
       </footer>
     </div>
     <!-- script -->
-    <script src="script.js"></script>
+    <!-- <script type="module" src="./scripts/helpers.js"></script> -->
+    <script type="module" src="./scripts/script.js"></script>
+
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"

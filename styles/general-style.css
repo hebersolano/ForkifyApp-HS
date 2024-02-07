@@ -90,8 +90,20 @@ a:hover {
   background-color: var(--main-c);
 }
 
+.btn {
+  cursor: pointer;
+  outline: none;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+.btn:hover {
+  background-color: var(--main-c);
+}
+
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .icon {
