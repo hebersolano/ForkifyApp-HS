@@ -11,13 +11,22 @@
       rel="stylesheet"
     />
     <title>Forkify App</title>
+    <link rel="stylesheet" href="general-style.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="app-main-container">
       <header class="header-container">
-        <div>
-          <label class="search-input-label" for="searchField">Recipes</label>
+        <div class="search-box">
+          <div class="bookmarks-box">
+            <ion-icon class="bookmark-icon" name="bookmarks"></ion-icon>
+            <div class="bookmark-window"></div>
+          </div>
+
+          <label class="search-input-label" for="searchField">
+            <ion-icon class="search-icon" name="search"></ion-icon>
+          </label>
+
           <input
             class="search-input"
             id="searchField"
@@ -25,75 +34,97 @@
             name="search"
             placeholder="What recipe are you looking for?"
           />
+
           <button class="btn searchBtn">Search</button>
         </div>
-        <h1 class="title">FORKIFY</h1>
+
+        <h1 class="title"><a class="" href="index.html">FORKIFY</a></h1>
       </header>
 
       <main class="recipe-container">
-        <section class="header-recipe">
-          <div class="header-img-box">
-            <img
-              class="img-header"
-              src="/img/BBQChickenPizzawithCauliflowerCrust5004699695624ce.jpg"
-              alt=""
-            />
-          </div>
-          <div class="header-recipe-text">
-            <h1>Spicy Chicken and Pepper Jack Pizza</h1>
-            <p class="recipe-publisher">My Baking Addiction</p>
-          </div>
-        </section>
+        <div class="">
+          <section class="header-recipe">
+            <div class="header-img-box">
+              <img class="img-header" src="" alt="image recipe food" />
+            </div>
+            <div class="header-recipe-title">
+              <h1 class="recipe-title"></h1>
+            </div>
+          </section>
 
-        <section class="content-recipe">
-          <div class="recipe-data">
-            <p class="cooking-time">
-              Cooking time: <span class="cooking-time-data">45</span>
-            </p>
-            <p class="servings">
-              Servings: <span class="servings-data">4</span>
-            </p>
-          </div>
+          <section class="recipe-data">
+            <div class="cooking-time-box flex">
+              <ion-icon class="icon icon-md" name="time-outline"></ion-icon> Cooking time:
+              <p class="cooking-time"><span class="cooking-time-data">45</span> minutes</p>
+            </div>
+            <div class="servings flex">
+              <ion-icon class="icon icon-md" name="people-outline"></ion-icon> Servings:
+              <span class="servings-data">4</span>
+              <span class="servings-control">
+                <a href="#" class="btn btn-ctr-servings">
+                  <ion-icon class="icon icon-ctr" name="add-circle-outline"> </ion-icon>
+                </a>
+                <a href="#" class="btn btn-ctr-servings">
+                  <ion-icon class="icon icon-ctr" name="remove-circle-outline"></ion-icon>
+                </a>
+              </span>
+            </div>
+          </section>
 
-          <div class="recipe-ingredients">
-            <ul class="recipe-ingredients-box">
-              <li class="recipe-ingredient">
-                <span class="recipe-amount">2</span>
-                <span class="recipe-unit">cups</span>
-                <span class="recipe-ingredient-name"
-                  >Chopped cilantro or dried oregano</span
-                >
-              </li>
-            </ul>
-          </div>
+          <section class="content-recipe">
+            <div class="recipe-ingredients">
+              <ul class="recipe-ingredients-box"></ul>
+            </div>
+          </section>
+        </div>
+
+        <section class="recipe-footer">
+          <p class="recipe-footer-title">HOW TO COOK IT</p>
+          <p class="recipe-publisher">
+            This recipe was carefully designed and tested by
+            <span class="publisher-name">Two Peas and Their Pod</span>. Please check out directions
+            at their website.
+          </p>
+          <a class="link" href="http://">Directions</a>
         </section>
       </main>
 
       <nav class="results-container">
         <ul class="results-list-box">
-          <!-- <ul class="recipes"></ul> -->
-          <li class="result-recipe-li">
-            <a href="#" class="result-recipe-link" data-id="29347109487">
+          <!-- <li class="result-recipe-li">
+            <a
+              href="#5ed6604591c37cdc054bcc13"
+              class="result-recipe-link"
+              data-id="5ed6604591c37cdc054bcc13"
+            >
               <img
                 class="result-recipe-img"
                 src="img/BBQChickenPizzawithCauliflowerCrust5004699695624ce.jpg"
                 alt="recipe"
               />
               <div class="result-recipe-text">
-                <p class="result-recipe-title">
-                  Cauliflower Pizza Crust (with BBQ Chicken Pizza)
-                </p>
+                <p class="result-recipe-title">Cauliflower Pizza Crust (with BBQ Chicken Pizza)</p>
                 <p class="result-recipe-publisher">Author</p>
               </div>
             </a>
-          </li>
+          </li> -->
         </ul>
       </nav>
+
       <footer>
-        <p>My app forkify</p>
+        <p class="footer-text">
+          Version modified and improved by Heber Solano. Original
+          <a href="https://forkify-v2.netlify.app/">Forkify&copy;</a> app made by
+          <a href="https://twitter.com/jonasschmedtman">Jonas Schmedtmann</a>
+        </p>
       </footer>
     </div>
     <!-- script -->
     <script src="script.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   </body>
 </html>

@@ -1,0 +1,110 @@
+/* ******************** */
+/* DESIGN SYSTEM */
+/* ******************** */
+/* 
+
+-- 00 WHITESPACE
+      SPACING SYSTEM (px)
+      2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+-- 01 TYPOGRAPHY SYSTEM
+      FONT SIZE SYSTEM (px)
+      10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+      
+    -Font weight:
+      400 default
+      500 medium
+      600 semi-bold
+
+    -Line height:
+        1 default: 
+        x1.05
+        x1.6 paragraph default
+    
+    -Letter spacing:
+      x0.5p big text
+
+--  02 COLORS
+
+     * Main Color: white
+      - Tints:
+      - Shades: 
+
+     * Accent:#6ba723 load progress #a2acd4 hover
+      - Tints:
+      - Shades:
+
+     * Grey: #7c7d86 text h2
+      - Tints:
+      #f6f9ff cloud storage box
+      - Shades:
+      #17132d back
+
+-- 03 SHADOWS
+    - 
+
+-- 04 BORDER-RADIUS
+      2.4rem
+      11px
+
+
+    
+*/
+
+/* ******************** */
+/* GENERAL STYLES */
+/* ******************** */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+a:link,
+a:visited {
+  color: var(--gray-tint-n1);
+}
+
+a:active,
+a:hover {
+  color: var(--accent-c);
+}
+
+.link:link,
+.link:visited {
+  text-decoration: none;
+  color: inherit;
+  border-radius: 99px;
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: var(--main-tint-n1);
+}
+
+.link:active,
+.link:hover {
+  background-color: var(--main-c);
+}
+
+.hidden {
+  display: none;
+}
+
+.icon {
+  color: var(--accent-c);
+}
+.icon-md {
+  height: 2.4rem;
+  width: 2.4rem;
+}
+
+/* CONTAINERS */
+.flex {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

@@ -7,6 +7,14 @@ let search = document.querySelector(".search-input");
 let searchBtn = document.querySelector(".searchBtn");
 let recipeList = document.querySelector(".results-list-box");
 
+// selecting recipe elements
+let imgRecipe = document.querySelector(".img-header");
+let titleRecipe = document.querySelector(".recipe-title");
+let cookTime = document.querySelector(".cooking-time-data");
+let servings = document.querySelector(".servings-data");
+let ingredientsBox = document.querySelector(".recipe-ingredients-box");
+let publisherName = document.querySelector(".publisher-name");
+
 let recipe;
 
 //listeners
@@ -24,39 +32,46 @@ search.addEventListener("keyup", function (e) {
   }
 });
 
-const recipesListener = function (e) {
-  let id;
-  let parentL1 = e.target.parentElement;
-  let parentL2 = e.target.parentElement.parentElement;
-  if (parentL1.classList.contains("recipe-li")) {
-    id = parentL1.dataset.id;
-    parentL1.classList;
-  } else if (parentL2.classList.contains("recipe-li")) {
-    id = parentL2.dataset.id;
+window.addEventListener("load", function () {
+  let url = this.location.href;
+  if (url.includes("#")) {
+    let id = url.split("#")[1];
+    getRecipe(id);
   }
+  console.log("window loads");
+});
+
+// Change URL
+window.addEventListener("hashchange", function (e) {
+  e.preventDefault();
+  console.log("hashChange");
+  let url = e.newURL;
+  let id = url.split("#")[1];
+  getRecipe(id);
+});
+
+const recipesListener = function (e) {
+  let resultRecipe = e.currentTarget.querySelector(".result-recipe-link");
+  let id = parseInt(resultRecipe.dataset.id);
+  console.log(id);
+  // window.location.href += id;
   // urlChange(id);
 };
 
-let recipeLi = document.querySelectorAll(".recipe-li");
+let recipeLi = document.querySelectorAll(".result-recipe-li");
 for (const recipe of recipeLi) {
   recipe.addEventListener("click", recipesListener);
 }
 
-function render(recipe) {
+function renderSearchResults(recipe) {
   if (!recipe?.image_url) return;
   let html = `
-    <li>
-      <a href="#${recipe.id}"  class="recipe-li" data-id="${recipe.id}">
-        <img
-          class="recipe-li-img"
-          src="${recipe.image_url}"
-          alt="recipe"
-        />
-        <div class="text">
-          <p class="recipe-li-title">
-            ${recipe.title}
-          </p>
-          <p class="recipe-publisher">${recipe.publisher}</p>
+    <li class="result-recipe-li">
+      <a href="#${recipe.id}" class="result-recipe-link" data-id="${recipe.id}">
+        <img class="result-recipe-img" src="${recipe.image_url}" alt="recipe" />
+        <div class="result-recipe-text">
+          <p class="result-recipe-title">${recipe.title}</p>
+          <p class="result-recipe-publisher">${recipe.publisher}</p>
         </div>
       </a>
     </li>
@@ -65,15 +80,16 @@ function render(recipe) {
   recipeList.insertAdjacentHTML("beforeend", html);
 }
 
-async function getSearch(query = "pizza") {
+const getSearch = async function (query) {
   try {
     const data = await fetch(`${PATH}?search=${query}&key=${API_key}`);
+    if (!data.ok) throw new Error("GetSearch error fetching");
+
     const json = await data.json();
     const recipes = json.data.recipes;
-    render();
-    recipes.map((recipe) => {
-      render(recipe);
-    });
+    for (let i = 0; i < 10; i++) {
+      renderSearchResults(recipes[i]);
+    }
 
     recipeLi = document.querySelectorAll(".recipe-li");
     for (const recipe of recipeLi) {
@@ -83,31 +99,52 @@ async function getSearch(query = "pizza") {
     console.error(e);
     throw e;
   }
-}
-
-// Change URL
-const urlChange = function (id) {
-  const nextURL = `${window.location.href}/${id}`;
-  const nextTitle = `Forkify App - `;
-  const nextState = { additionalInformation: "Updated the URL with JS" };
-
-  // This will create a new entry in the browser's history, without reloading
-  window.history.pushState(nextState, nextTitle, nextURL);
-
-  // This will replace the current entry in the browser's history, without reloading
-  window.history.replaceState(nextState, nextTitle, nextURL);
 };
 
-window.addEventListener("hashchange", function (e) {
-  console.log(e, this.href);
-});
+const getRecipe = async function (id) {
+  console.log("getRecipe");
+  try {
+    const data = await fetch(`https://forkify-api.herokuapp.com/api/v2/recipes/${id}`);
+    if (!data.ok) throw new Error("gerRecipe error!");
 
-const getRecipe = async function () {
-  const data = await fetch(
-    "https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886"
-  );
-  console.log(data);
-  const json = await data.json();
-  recipe = json.data.recipe;
-  console.log(json, recipe);
+    const json = await data.json();
+    recipe = json.data.recipe;
+    renderRecipe(recipe);
+  } catch (error) {
+    console.error("myError", error);
+  }
+};
+
+// getRecipe();
+const recipeContainer = document.querySelector(".recipe-container");
+
+const renderRecipe = function (recipe) {
+  imgRecipe.src = recipe.image_url;
+  titleRecipe.textContent = recipe.title;
+
+  cookTime.textContent = recipe.cooking_time;
+  servings.textContent = recipe.servings;
+
+  publisherName.textContent = recipe.publisher;
+
+  for (const ingredient of recipe.ingredients) {
+    let ingredientsTemplate = `
+      <li class="recipe-ingredient">
+        <ion-icon class="icon icon-md ingredient-icon" name="checkmark-outline"></ion-icon>
+        <p>
+          <span class="recipe-amount">${
+            ingredient.quantity ? ingredient.quantity : ""
+          }</span> <span class="recipe-unit">${ingredient.unit ? ingredient.unit : ""}</span>
+          <span class="recipe-ingredient-name">${ingredient.description}</span>
+        </p>
+      </li>
+    `;
+
+    ingredientsBox.insertAdjacentHTML("afterbegin", ingredientsTemplate);
+  }
+  for (const child of recipeContainer.children) {
+    if (child.classList.contains("hidden")) {
+      child.classList.remove("hidden");
+    }
+  }
 };
